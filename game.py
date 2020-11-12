@@ -5,15 +5,19 @@ from random import randint
 name = "ya-ilya game"
 ver = "beta 0.1"
 
+savefiler = open("save.txt",'r',encoding = 'utf-8')
+moneyfile = int(savefiler.read(1))
+energyfile = int(savefiler.read(3))
 fishs = 0
-money = 0
+money = moneyfile
 level = 1
 exp = 0
 fact = 0
 facttwo = 0
-energy = 20
+energy = energyfile
 itemud = 0
 ud = 80
+savefiler.close()
 
 print("██╗░░░██╗░█████╗░░░░░░░██╗██╗░░░░░██╗░░░██╗░█████╗░\n╚██╗░██╔╝██╔══██╗░░░░░░██║██║░░░░░╚██╗░██╔╝██╔══██╗\n░╚████╔╝░███████║█████╗██║██║░░░░░░╚████╔╝░███████║\n░░╚██╔╝░░██╔══██║╚════╝██║██║░░░░░░░╚██╔╝░░██╔══██║\n░░░██║░░░██║░░██║░░░░░░██║███████╗░░░██║░░░██║░░██║\n░░░╚═╝░░░╚═╝░░╚═╝░░░░░░╚═╝╚══════╝░░░╚═╝░░░╚═╝░░╚═╝")
 print("Welcome to " + name + " [" + ver + "]")
@@ -33,7 +37,7 @@ if selmain == 1:
                         try:
                                 os.system('cls' if os.name == 'nt' else 'clear')
                                 print("| Сhoose what you want to do")
-                                print("| 1 - To go fishing\n| 2 - Go to work in a factory\n| 3 - Stats\n| 4 - Restore power\n| 5 - Go to the store\n| 6 - Inventory ")
+                                print("| 1 - To go fishing\n| 2 - Go to work in a factory\n| 3 - Stats\n| 4 - Restore power\n| 5 - Go to the store\n| 6 - Inventory\n| 7 - Save game ")
                                 print("------------------------------------------------------------------")
                                 seldey = 0
                                 seldey = int(input("> "))
@@ -223,6 +227,18 @@ if selmain == 1:
                                                 time.sleep(1)
                                         print("| You can buy items in the store")
                                         print("------------------------------------------------------------------")
+                                        invsel=int(input("| Exit?\n> "))
+                                        print(invsel)
+                                        if invsel != 56443:
+                                                os.system('cls' if os.name == 'nt' else 'clear')
+                                elif seldey == 7:
+                                        os.system('cls' if os.name == 'nt' else 'clear')
+                                        print("| The game is saved...")
+                                        savefilew = open("save.txt",'w')
+                                        savefilew.write(str(money) + '\n' + str(energy))
+                                        savefilew.close()
+                                        time.sleep(2)
+                                        print("| The game has been saved!")
                                         invsel=int(input("| Exit?\n> "))
                                         print(invsel)
                                         if invsel != 56443:
