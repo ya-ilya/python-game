@@ -20,12 +20,12 @@ print("Welcome to " + name + " [" + ver + "]")
 time.sleep(1.5)
 print("| 1 - New Game")
 print("| 2 - Credits [finishes the program]")
-print("------------------------------------------------------------------------")
+print("------------------------------------------------------------------")
 selmain = int(input("> "))
 
 if selmain == 1:
         print("| [SOON] Choose the difficulty\n| 1 - Normal")
-        print("------------------------------------------------------------------------")
+        print("------------------------------------------------------------------")
         seldiff = 0
         seldiff = int(input("> "))
         if seldiff == 1:
@@ -34,7 +34,7 @@ if selmain == 1:
                                 os.system('cls' if os.name == 'nt' else 'clear')
                                 print("| Сhoose what you want to do")
                                 print("| 1 - To go fishing\n| 2 - Go to work in a factory\n| 3 - Stats\n| 4 - Restore power\n| 5 - Go to the store\n| 6 - Inventory ")
-                                print("------------------------------------------------------------------------")
+                                print("------------------------------------------------------------------")
                                 seldey = 0
                                 seldey = int(input("> "))
                                 if seldey == 1:
@@ -58,11 +58,11 @@ if selmain == 1:
                                                 print("| You managed to catch " + str(fishs) + " fish. You sold them for $ " + str(fishmoney))
                                                 time.sleep(0.8)
                                                 print("| You also spent 6 energy!")
-                                                print("------------------------------------------------------------------------")
+                                                print("------------------------------------------------------------------")
                                                 money = money + fishmoney
                                         elif energy < 6:
                                                 print("| You have no energy! Sleep")
-                                                print("------------------------------------------------------------------------")
+                                                print("------------------------------------------------------------------")
                                         invsel=int(input("| Exit?\n> "))
                                         print(invsel)
                                         if invsel != 56443:
@@ -102,7 +102,7 @@ if selmain == 1:
                                                                 elif level == 3:
                                                                         facttwo == randint(7, 13)
                                                                 print("| You have earned " + str(facttwo) + "$ so far")
-                                                                print("------------------------------------------------------------------------")
+                                                                print("------------------------------------------------------------------")
                                                                 money = money + fact
                                                                 time.sleep(0.9)
                                                         b=int(input("| 1 - get started\n| Any number - cancel\n"))
@@ -142,7 +142,7 @@ if selmain == 1:
                                                                 factmoneys = fact + facttwo
                                                                 print("| You got another " + str(factmoneys) + "$ working in the factory")
                                                                 print("| You also spent 8 energy!")
-                                                                print("------------------------------------------------------------------------")
+                                                                print("------------------------------------------------------------------")
                                                                 invsel=int(input("| Exit?\n> "))
                                                                 print(invsel)
                                                                 if invsel != 56443:
@@ -151,7 +151,7 @@ if selmain == 1:
                                                                 time.sleep(0.9)
                                                 elif energy < 8:
                                                         print("| You have no energy! Sleep")
-                                                        print("------------------------------------------------------------------------")
+                                                        print("------------------------------------------------------------------")
                                                         time.sleep(0.8)
                                                         
                                                         
@@ -167,7 +167,7 @@ if selmain == 1:
                                         time.sleep(1.0)
                                 elif seldey == 4:
                                         os.system('cls' if os.name == 'nt' else 'clear')
-                                        vop=int(input("| Are you sure this is what you want? This will take time\n| 1 - get started\n| Any number - cancel\n------------------------------------------------------------------------\n> "))
+                                        vop=int(input("| Are you sure this is what you want? This will take time\n| 1 - get started\n| Any number - cancel\n------------------------------------------------------------------\n> "))
                                         print(vop)
                                         if vop == 1:
                                                 tempenergy = energy
@@ -176,12 +176,12 @@ if selmain == 1:
                                                         energy = energy + energyint
                                                         print("| You went to bed and started sleeping")
                                                         time.sleep(1)
-                                                        print("------------------------------------------------------------------------")
+                                                        print("------------------------------------------------------------------")
                                                         time.sleep(3)
                                                         print("| Good morning! Your energy has been restored by " + str(energyint) + "!")
                                                         time.sleep(1)
                                                         print("| Now you have " + str(energy) + " energy")
-                                                        print("------------------------------------------------------------------------")
+                                                        print("------------------------------------------------------------------")
                                                         time.sleep(2)
                                                         invsel=int(input("| Exit?\n> "))
                                                         print(invsel)
@@ -196,17 +196,17 @@ if selmain == 1:
                                         if magsel == 1:
                                                 if itemud != 0:
                                                         print("| You already have a fishing rod!")
-                                                        print("------------------------------------------------------------------------")
+                                                        print("------------------------------------------------------------------")
                                                         time.sleep(1)
                                                 elif itemud == 0:
                                                         if money < ud:
                                                                 print("| Fool! You don't have enough money to buy this")
-                                                                print("------------------------------------------------------------------------")
+                                                                print("------------------------------------------------------------------")
                                                         elif money > ud:
                                                                 money = money - ud
                                                                 itemud = 1
                                                                 print("| You have successfully purchased a fishing rod for $80! Now your balance - " + str(money))
-                                                                print("------------------------------------------------------------------------")
+                                                                print("------------------------------------------------------------------")
                                                                 time.sleep(1)
                                         invsel=int(input("| Exit?\n> "))
                                         print(invsel)
@@ -222,7 +222,7 @@ if selmain == 1:
                                                 print("| Fishing rod: available")
                                                 time.sleep(1)
                                         print("| You can buy items in the store")
-                                        print("------------------------------------------------------------------------")
+                                        print("------------------------------------------------------------------")
                                         invsel=int(input("| Exit?\n> "))
                                         print(invsel)
                                         if invsel != 56443:
