@@ -1,13 +1,17 @@
 import time
 import os
 from random import randint
+import colorama
+from colorama import Fore, Back, Style
+colorama.init()
 
 name = "ya-ilya game"
-ver = "beta 0.1"
+ver = "beta 0.5"
 
 savefiler = open("save.txt",'r',encoding = 'utf-8')
 moneyfile = int(savefiler.read(1))
 energyfile = int(savefiler.read(3))
+healthfile = int(savefiler.read(5))
 fishs = 0
 money = moneyfile
 level = 1
@@ -15,7 +19,11 @@ exp = 0
 fact = 0
 facttwo = 0
 energy = energyfile
+health = healthfile
 itemud = 0
+itemhare = 0
+itemdeer = 0
+itembird = 0
 ud = 80
 savefiler.close()
 
@@ -36,8 +44,9 @@ if selmain == 1:
                 while 1:
                         try:
                                 os.system('cls' if os.name == 'nt' else 'clear')
+                                print(Fore.GREEN + '| Money: ' + str(money) + Fore.YELLOW + ' | Energy: ' + str(energy) + Fore.RED + ' | Health: ' + str(health) + ' |' + Fore.RESET)
                                 print("| Сhoose what you want to do")
-                                print("| 1 - To go fishing\n| 2 - Go to work in a factory\n| 3 - Stats\n| 4 - Restore power\n| 5 - Go to the store\n| 6 - Inventory\n| 7 - Save game ")
+                                print("| 1 - To go fishing\n| 2 - Go to work in a factory\n| 3 - Restore power\n| 4 - Go to the store\n| 5 - Inventory\n| 6 - Save game\n| 7 - Hunt ")
                                 print("------------------------------------------------------------------")
                                 seldey = 0
                                 seldey = int(input("> "))
@@ -67,6 +76,7 @@ if selmain == 1:
                                         elif energy < 6:
                                                 print("| You have no energy! Sleep")
                                                 print("------------------------------------------------------------------")
+                                                time.sleep(5)
                                         invsel=int(input("| Exit?\n> "))
                                         print(invsel)
                                         if invsel != 56443:
@@ -156,20 +166,9 @@ if selmain == 1:
                                                 elif energy < 8:
                                                         print("| You have no energy! Sleep")
                                                         print("------------------------------------------------------------------")
-                                                        time.sleep(0.8)
-                                                        
+                                                        time.sleep(5)
                                                         
                                 elif seldey == 3:
-                                        os.system('cls' if os.name == 'nt' else 'clear')
-                                        print("| You have " + str(money) + "$")
-                                        print("| Energy you have - " + str(energy))
-                                        print("--------------------------------")
-                                        invsel=int(input("| Exit?\n> "))
-                                        print(invsel)
-                                        if invsel != 56443:
-                                                         os.system('cls' if os.name == 'nt' else 'clear')
-                                        time.sleep(1.0)
-                                elif seldey == 4:
                                         os.system('cls' if os.name == 'nt' else 'clear')
                                         vop=int(input("| Are you sure this is what you want? This will take time\n| 1 - get started\n| Any number - cancel\n------------------------------------------------------------------\n> "))
                                         print(vop)
@@ -193,7 +192,7 @@ if selmain == 1:
                                                                 os.system('cls' if os.name == 'nt' else 'clear')
                                                 else:
                                                         print("| You have enough energy - " + energy)
-                                elif seldey == 5:
+                                elif seldey == 4:
                                         os.system('cls' if os.name == 'nt' else 'clear')
                                         magsel=int(input("| You came to the store and were shown a list of products\n| 1 - fishing rod (gives you 2 times more money from fishin\n| Enter the number of the item you want to buy: "))
                                         print(magsel)
@@ -216,7 +215,7 @@ if selmain == 1:
                                         print(invsel)
                                         if invsel != 56443:
                                                 os.system('cls' if os.name == 'nt' else 'clear')
-                                elif seldey == 6:
+                                elif seldey == 5:
                                         os.system('cls' if os.name == 'nt' else 'clear')
                                         print("| Your inventory:")
                                         if itemud == 0:
@@ -231,7 +230,7 @@ if selmain == 1:
                                         print(invsel)
                                         if invsel != 56443:
                                                 os.system('cls' if os.name == 'nt' else 'clear')
-                                elif seldey == 7:
+                                elif seldey == 6:
                                         os.system('cls' if os.name == 'nt' else 'clear')
                                         print("| The game is saved...")
                                         savefilew = open("save.txt",'w')
@@ -243,5 +242,84 @@ if selmain == 1:
                                         print(invsel)
                                         if invsel != 56443:
                                                 os.system('cls' if os.name == 'nt' else 'clear')
+                                elif seldey == 7:
+                                        os.system('cls' if os.name == 'nt' else 'clear')
+                                        if energy > 6:
+                                                huntsel=int(input("| Are you sure you want to go hunting? You might get killed\n| 1 - Yes\n| ENTER - No\n> "))
+                                                print(huntsel)
+                                                if huntsel == 1:
+                                                        print("| You went hunting")
+                                                        huntrand = randint(3, 12)
+                                                        huntrandentity = randint(1, 3)
+                                                        huntrandsn = randint (1, 3)
+                                                        time.sleep(huntrand)
+                                                        if huntrandentity == 1:
+                                                                hunttargeone = "hare"
+                                                        elif huntrandentity == 2:
+                                                                hunttargeone = "deer"
+                                                        elif huntrandentity == 3:
+                                                                hunttargeone = "bird"
+                                                        huntone=int(input("| Have you seen " + str(hunttargeone) + "\n| Shoot him?\n| 1 - Yes\n> "))
+                                                        print(huntone)
+                                                        if huntone == 1:
+                                                                if huntrandsn == 1:
+                                                                        if hunttargeone == "hare":
+                                                                                print("| You have successfully shot a hare")
+                                                                                if itemhare >= 4:
+                                                                                        print("| You don't have room for this hare! Sell the rest in the store!")
+                                                                                        time.sleep(2)
+                                                                                else:
+                                                                                        energy = energy - 3
+                                                                                        itemhare = itemhare + 1
+                                                                                        time.sleep(2)
+                                                                        elif hunttargeone == "deer":
+                                                                                print("| Wow! You shot a deer! Good loot")
+                                                                                if itemdeer >= 2:
+                                                                                        print("| Unfortunately, you can not carry this deer, you have no free space! You can free up space by selling items in the store!")
+                                                                                        time.sleep(2)
+                                                                                else:
+                                                                                        itemdeer = itemdeer + 1
+                                                                                        energy = energy - 5
+                                                                                        time.sleep(2)
+                                                                        elif hunttargeone == "bird":
+                                                                                print("| You shot a little bird! So-so production")   
+                                                                                itembird = itembird + 1
+                                                                                energy = energy - 2
+                                                                                time.sleep(2)            
+                                                                elif huntrandsn == 2:
+                                                                        if hunttargeone == "hare":
+                                                                                print("| You missed the hare! Here's the failure")
+                                                                                time.sleep(2)
+                                                                        elif hunttargeone == "bird":
+                                                                                print("| You missed the bird. Don't worry, you'll catch it again!")
+                                                                                time.sleep(2)
+                                                                        elif hunttargeone == "deer":
+                                                                                print("| You missed the deer! I could have made a lot of money")
+                                                                                time.sleep(2)
+                                                                elif huntrandsn == 3:
+                                                                        if hunttargeone == "hare":
+                                                                                print("| You wounded the hare but it managed to escape!")
+                                                                                time.sleep(2)
+                                                                        elif hunttargeone == "bird":
+                                                                                print("| You hit a bird but it managed to fly away")
+                                                                                time.sleep(2)
+                                                                        elif huntrandsn == "deer":
+                                                                                if health < 10:
+                                                                                        print("You hit a deer in the leg and it ran at you! You're dead...")
+                                                                                        money = money - money / 2
+                                                                                        energy = energy - energy / 2
+                                                                                        health = 15
+                                                                                        time.sleep(2)
+                                                                                else:
+                                                                                        health = health - 10
+                                                                                        print("| you hit a deer in the leg and it ran at you! Your HP has dropped to " + str(health))
+                                                                                        time.sleep(2)
+                                        elif energy < 6:
+                                                print("| You have no energy! Sleep")
+                                                time.sleep(2)
+                                        invsel=int(input("| Exit?\n> "))
+                                        print(invsel)
+
+                                                                
                         except ValueError:
                                 print("")

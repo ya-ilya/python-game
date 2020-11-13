@@ -4,4 +4,4 @@
 ### Usage
 - Install Python on https://www.python.org/downloads/
 - Download the game itself
-- Open a command prompt in the folder containing the file and type ./game.py
+- Open a command prompt in the folder containing the file and type `pip install colorama` first, and then `./game.py`
