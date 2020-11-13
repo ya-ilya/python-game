@@ -6,7 +6,7 @@ from colorama import Fore, Back, Style
 colorama.init()
 
 name = "ya-ilya game"
-ver = "beta 0.5"
+ver = "beta 0.6"
 
 savefiler = open("save.txt",'r',encoding = 'utf-8')
 moneyfile = int(savefiler.read(1))
@@ -194,7 +194,7 @@ if selmain == 1:
                                                         print("| You have enough energy - " + energy)
                                 elif seldey == 4:
                                         os.system('cls' if os.name == 'nt' else 'clear')
-                                        magsel=int(input("| You came to the store and were shown a list of products\n| 1 - fishing rod (gives you 2 times more money from fishin\n| Enter the number of the item you want to buy: "))
+                                        magsel=int(input("| You came to the store and were shown a list of products\n| 1 - fishing rod (gives you 2 times more money from fishin\n| 2 - to sell rabbits\n| 3 - sell deer\n| 4 - to sell birds\n| Enter the number of the product you want to sell or buy: "))
                                         print(magsel)
                                         if magsel == 1:
                                                 if itemud != 0:
@@ -211,6 +211,37 @@ if selmain == 1:
                                                                 print("| You have successfully purchased a fishing rod for $80! Now your balance - " + str(money))
                                                                 print("------------------------------------------------------------------")
                                                                 time.sleep(1)
+                                        elif magsel == 2:
+                                                if itemhare != 0:
+                                                        haremoney = itemhare * 7
+                                                        itemhare = 0
+                                                        print("| You have successfully sold all the hares and received " + str(haremoney))
+                                                        money = money + haremoney
+                                                        time.sleep(1)
+                                                elif itemhare == 0:
+                                                        print("| You don't have any hares in your inventory")
+                                                        time.sleep(1)
+                                        elif magsel == 3:
+                                                if itemdeer != 0:
+                                                        deermoney = itemdeer * 12
+                                                        itemdeer = 0
+                                                        print("| You sold all the deer and got " + str(deermoney))
+                                                        money = money + deermoney
+                                                        time.sleep(1)
+                                                elif itemhare == 0:
+                                                        print("| You don't have any deer in your inventory")
+                                                        time.sleep(1)
+                                        elif magsel == 3:
+                                                if itembird != 0:
+                                                        birdmoney = itemdeer * 4
+                                                        itembird = 0
+                                                        print("| You sold all the birds for " + str(birdmoney))
+                                                        money = money + birdmoney
+                                                        time.sleep(1)
+                                                elif itembird == 0:
+                                                        print("| You don't have any birds in your inventory")
+                                                        time.sleep(1)
+
                                         invsel=int(input("| Exit?\n> "))
                                         print(invsel)
                                         if invsel != 56443:
@@ -224,6 +255,18 @@ if selmain == 1:
                                         elif itemud == 1:
                                                 print("| Fishing rod: available")
                                                 time.sleep(1)
+                                        if itemhare == 0:
+                                                time.sleep(1)
+                                        elif itemhare != 0:
+                                                print("| Hare: " + str(itemhare))
+                                        if itembird == 0:
+                                                time.sleep(1)
+                                        elif itembird != 0:
+                                                print("| Birds: " + str(itembird))
+                                        if itemdeer == 0:
+                                                time.sleep(1)
+                                        elif itemdeer != 0:
+                                                print("| Deers: " + str(itemdeer))
                                         print("| You can buy items in the store")
                                         print("------------------------------------------------------------------")
                                         invsel=int(input("| Exit?\n> "))
@@ -234,7 +277,7 @@ if selmain == 1:
                                         os.system('cls' if os.name == 'nt' else 'clear')
                                         print("| The game is saved...")
                                         savefilew = open("save.txt",'w')
-                                        savefilew.write(str(money) + '\n' + str(energy))
+                                        savefilew.write(str(money) + '\n' + str(energy) + '\n' + str(health))
                                         savefilew.close()
                                         time.sleep(2)
                                         print("| The game has been saved!")
