@@ -6,13 +6,17 @@ from colorama import Fore, Back, Style
 colorama.init()
 
 name = "ya-ilya game"
-ver = "beta 0.7"
+ver = "beta 0.8"
 
 savefiler = open("save.txt",'r',encoding = 'utf-8')
 moneyfile = int(savefiler.readline())
 energyfile = int(savefiler.readline())
 healthfile = int(savefiler.readline())
 itemfirstaidkit = int(savefiler.readline())
+itemud = int(savefiler.readline())
+itemhare = int(savefiler.readline())
+itemdeer = int(savefiler.readline())
+itembird = int(savefiler.readline())
 fishs = 0
 money = moneyfile
 level = 1
@@ -21,10 +25,6 @@ fact = 0
 facttwo = 0
 energy = energyfile
 health = healthfile
-itemud = 0
-itemhare = 0
-itemdeer = 0
-itembird = 0
 ud = 80
 savefiler.close()
 
@@ -259,7 +259,7 @@ if selmain == 1:
                                         os.system('cls' if os.name == 'nt' else 'clear')
                                         print("| Your inventory:")
                                         if itemud == 0:
-                                                print("| Fishing rods: is not available")
+                                                time.sleep(1)
                                         elif itemud == 1:
                                                 print("| Fishing rod: available")
                                         if itemhare == 0:
@@ -275,22 +275,28 @@ if selmain == 1:
                                         elif itemdeer != 0:
                                                 print("| Deers: " + str(itemdeer))
                                         if itemfirstaidkit == 0:
+                                                faktext = "| ENTER - Exit\n> "
                                                 time.sleep(1)
                                         elif itemfirstaidkit != 0:
+                                                faktext = "| 1 - Apply first aid kit | ENTER - Exit\n> "
                                                 print("| First aid kits: " + str(itemfirstaidkit))
                                         print("| You can buy items in the store")
                                         print("------------------------------------------------------------------")
-                                        invsel=int(input("| 1 - Apply first aid kit | ENTER - Exit\n> "))
+                                        invsel=int(input(str(faktext)))
                                         print(invsel)
                                         if invsel == 1:
-                                                if health >= 20:
-                                                        print("| You have enough HP already!")
-                                                        time.sleep(1)
-                                                elif health < 20:
-                                                        fakrand = randint(5, 20)
-                                                        print("| First aid kit successfully applied! You added " + str(fakrand))
-                                                        health = health + fakrand
-                                                        itemfirstaidkit = itemfirstaidkit - 1
+                                                if itemfirstaidkit >= 1:
+                                                        if health >= 20:
+                                                                print("| You have enough HP already!")
+                                                                time.sleep(1)
+                                                        elif health < 20:
+                                                                fakrand = randint(5, 20)
+                                                                print("| First aid kit successfully applied! You added " + str(fakrand))
+                                                                health = health + fakrand
+                                                                itemfirstaidkit = itemfirstaidkit - 1
+                                                                time.sleep(1)
+                                                elif itemfirstaidkit < 1:
+                                                        print("| You don't have any first aid kits! You can buy them in the store")
                                                         time.sleep(1)
                                         elif invsel != 56443:
                                                 os.system('cls' if os.name == 'nt' else 'clear')
@@ -298,7 +304,7 @@ if selmain == 1:
                                         os.system('cls' if os.name == 'nt' else 'clear')
                                         print("| The game is saved...")
                                         savefilew = open("save.txt",'w')
-                                        savefilew.write(str(money) + '\n' + str(energy) + '\n' + str(health) + '\n' + str(itemfirstaidkit))
+                                        savefilew.write(str(money) + '\n' + str(energy) + '\n' + str(health) + '\n' + str(itemfirstaidkit) + "\n" + str(itemud) + "\n" + str(itemhare) + "\n" + str(itemdeer) + "\n" + str(itembird))
                                         savefilew.close()
                                         time.sleep(2)
                                         print("| The game has been saved!")
