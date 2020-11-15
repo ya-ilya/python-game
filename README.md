@@ -4,4 +4,7 @@
 ### Usage
 - Install Python on https://www.python.org/downloads/
 - Download the game itself
-- Open a command prompt in the folder containing the file and type `pip install colorama` first, and then `./game.py`
+- Open the terminal in the folder with these files and enter the following commands:
+`pip install colorama`
+`pip install inputimeout`
+- To start the game, enter `./game.py`
