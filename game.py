@@ -6,26 +6,18 @@ from colorama import Fore, Back, Style
 colorama.init()
 
 name = "ya-ilya game"
-ver = "beta 0.8"
+ver = "beta 0.9"
 
 savefiler = open("save.txt",'r',encoding = 'utf-8')
-moneyfile = int(savefiler.readline())
-energyfile = int(savefiler.readline())
-healthfile = int(savefiler.readline())
+money = int(savefiler.readline())
+energy = int(savefiler.readline())
+health = int(savefiler.readline())
 itemfirstaidkit = int(savefiler.readline())
 itemud = int(savefiler.readline())
 itemhare = int(savefiler.readline())
 itemdeer = int(savefiler.readline())
 itembird = int(savefiler.readline())
-fishs = 0
-money = moneyfile
-level = 1
-exp = 0
-fact = 0
-facttwo = 0
-energy = energyfile
-health = healthfile
-ud = 80
+level = int(savefiler.readline())
 savefiler.close()
 
 print("██╗░░░██╗░█████╗░░░░░░░██╗██╗░░░░░██╗░░░██╗░█████╗░\n╚██╗░██╔╝██╔══██╗░░░░░░██║██║░░░░░╚██╗░██╔╝██╔══██╗\n░╚████╔╝░███████║█████╗██║██║░░░░░░╚████╔╝░███████║\n░░╚██╔╝░░██╔══██║╚════╝██║██║░░░░░░░╚██╔╝░░██╔══██║\n░░░██║░░░██║░░██║░░░░░░██║███████╗░░░██║░░░██║░░██║\n░░░╚═╝░░░╚═╝░░╚═╝░░░░░░╚═╝╚══════╝░░░╚═╝░░░╚═╝░░╚═╝")
@@ -47,12 +39,13 @@ if selmain == 1:
                                 os.system('cls' if os.name == 'nt' else 'clear')
                                 print(Fore.GREEN + '| Money: ' + str(money) + Fore.YELLOW + ' | Energy: ' + str(energy) + Fore.RED + ' | Health: ' + str(health) + ' |' + Fore.RESET)
                                 print("| Сhoose what you want to do")
-                                print("| 1 - To go fishing\n| 2 - Go to work in a factory\n| 3 - Restore power\n| 4 - Go to the store\n| 5 - Inventory\n| 6 - Save game\n| 7 - Hunt ")
+                                print("| 1 - To go fishing\n| 2 - Go to work in a factory\n| 3 - Restore power\n| 4 - Go to the store\n| 5 - Inventory\n| 6 - Save game\n| 7 - Hunt\n| 8 - Exit")
                                 print("------------------------------------------------------------------")
                                 seldey = 0
                                 seldey = int(input("> "))
                                 if seldey == 1:
                                         if energy > 6:
+                                                fishs = 0
                                                 os.system('cls' if os.name == 'nt' else 'clear')
                                                 print("| You started fishing")
                                                 time.sleep(randint(0, 9))
@@ -83,6 +76,7 @@ if selmain == 1:
                                                 os.system('cls' if os.name == 'nt' else 'clear')
                                 elif seldey == 2:
                                                 if energy > 8:
+                                                        exp = 0
                                                         os.system('cls' if os.name == 'nt' else 'clear')
                                                         print("| You came to work at the factory. There is a system of levels. The more levels the more you pay")
                                                         time.sleep(0.7)
@@ -101,6 +95,7 @@ if selmain == 1:
                                                                 print("| Finishing the job..")
                                                                 time.sleep(1.0)
                                                                 energy = energy - 4
+                                                                facttwo = 0
                                                                 if level == 1:
                                                                         exp = exp + randint(1, 2)
                                                                         facttwo = randint(3, 7)
@@ -117,7 +112,6 @@ if selmain == 1:
                                                                         facttwo == randint(7, 13)
                                                                 print("| You have earned " + str(facttwo) + "$ so far")
                                                                 print("------------------------------------------------------------------")
-                                                                money = money + fact
                                                                 time.sleep(0.9)
                                                         b=int(input("| 1 - get started\n| Any number - cancel\n"))
                                                         if b != 1:
@@ -135,6 +129,7 @@ if selmain == 1:
                                                                 print("| Finishing the job..")
                                                                 time.sleep(1.0)
                                                                 energy = energy - 4
+                                                                fact = 0
                                                                 if level == 1:
                                                                         exp = exp + randint(1, 2)
                                                                         fact = randint(3, 7)
@@ -154,7 +149,8 @@ if selmain == 1:
                                                                 elif level == 3:
                                                                         fact == randint(7, 13)
                                                                 factmoneys = fact + facttwo
-                                                                print("| You got another " + str(factmoneys) + "$ working in the factory")
+                                                                money = factmoneys
+                                                                print("| You got another " + str(factmoneys) + "$ working in the factory\n| You have " + str(level) + " level")
                                                                 print("| You also spent 8 energy!")
                                                                 print("------------------------------------------------------------------")
                                                                 invsel=int(input("| Exit?\n> "))
@@ -202,11 +198,11 @@ if selmain == 1:
                                                         print("------------------------------------------------------------------")
                                                         time.sleep(1)
                                                 elif itemud == 0:
-                                                        if money < ud:
+                                                        if money < 80:
                                                                 print("| Fool! You don't have enough money to buy this")
                                                                 print("------------------------------------------------------------------")
-                                                        elif money > ud:
-                                                                money = money - ud
+                                                        elif money > 80:
+                                                                money = money - 80
                                                                 itemud = 1
                                                                 print("| You have successfully purchased a fishing rod for $80! Now your balance - " + str(money))
                                                                 print("------------------------------------------------------------------")
@@ -304,7 +300,7 @@ if selmain == 1:
                                         os.system('cls' if os.name == 'nt' else 'clear')
                                         print("| The game is saved...")
                                         savefilew = open("save.txt",'w')
-                                        savefilew.write(str(money) + '\n' + str(energy) + '\n' + str(health) + '\n' + str(itemfirstaidkit) + "\n" + str(itemud) + "\n" + str(itemhare) + "\n" + str(itemdeer) + "\n" + str(itembird))
+                                        savefilew.write(str(money) + '\n' + str(energy) + '\n' + str(health) + '\n' + str(itemfirstaidkit) + "\n" + str(itemud) + "\n" + str(itemhare) + "\n" + str(itemdeer) + "\n" + str(itembird) + "\n" + str(level))
                                         savefilew.close()
                                         time.sleep(2)
                                         print("| The game has been saved!")
@@ -319,7 +315,7 @@ if selmain == 1:
                                                 print(huntsel)
                                                 if huntsel == 1:
                                                         print("| You went hunting")
-                                                        huntrand = randint(3, 12)
+                                                        huntrand = randint(3, 8)
                                                         huntrandentity = randint(1, 3)
                                                         huntrandsn = randint (1, 3)
                                                         time.sleep(huntrand)
@@ -329,9 +325,9 @@ if selmain == 1:
                                                                 hunttargeone = "deer"
                                                         elif huntrandentity == 3:
                                                                 hunttargeone = "bird"
-                                                        huntone=int(input("| Have you seen " + str(hunttargeone) + "\n| Shoot him?\n| 1 - Yes\n> "))
-                                                        print(huntone)
-                                                        if huntone == 1:
+                                                        try:
+                                                                from inputimeout import inputimeout, TimeoutOccurred
+                                                                something = inputimeout(prompt="| Have you seen " + str(hunttargeone) + "\n| Shoot him?\n| 1 - Yes\n> ", timeout=3)
                                                                 if huntrandsn == 1:
                                                                         if hunttargeone == "hare":
                                                                                 print("| You have successfully shot a hare")
@@ -384,11 +380,17 @@ if selmain == 1:
                                                                                         health = health - 10
                                                                                         print("| you hit a deer in the leg and it ran at you! Your HP has dropped to " + str(health))
                                                                                         time.sleep(2)
+                                                        except TimeoutOccurred:
+                                                                something = "| You didn't have time to shoot ("
+                                                        print(something)
                                         elif energy < 6:
                                                 print("| You have no energy! Sleep")
                                                 time.sleep(2)
                                         invsel=int(input("| Exit?\n> "))
                                         print(invsel)
+                                elif seldey == 8:
+                                        print("| bb")
+                                        os.abort()
 
                                                                 
                         except ValueError:
