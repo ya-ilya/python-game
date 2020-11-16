@@ -6,7 +6,7 @@ from colorama import Fore, Back, Style
 colorama.init()
 
 name = "ya-ilya game"
-ver = "beta 0.9"
+ver = "pre-release 1.0"
 
 savefiler = open("save.txt",'r',encoding = 'utf-8')
 money = int(savefiler.readline())
@@ -238,15 +238,17 @@ if selmain == 1:
                                                         print("| You don't have any birds in your inventory")
                                                         time.sleep(1)
                                         elif magsel == 5:
-                                                if itemfirstaidkit < 5:
-                                                        print("| you have successfully purchased a first aid kit")
-                                                        money = money - 20
-                                                        itemfirstaidkit = itemfirstaidkit + 1
-                                                        time.sleep(1)
-                                                elif itemfirstaidkit >= 5:
-                                                        print("you have more than 5 first aid kits! where do you want so much?")
-                                                        time.sleep(1)
-
+                                                if money >= 20:
+                                                        if itemfirstaidkit < 5:
+                                                                print("| you have successfully purchased a first aid kit")
+                                                                money = money - 20
+                                                                itemfirstaidkit = itemfirstaidkit + 1
+                                                                time.sleep(1)
+                                                        elif itemfirstaidkit >= 5:
+                                                                print("you have more than 5 first aid kits! where do you want so much?")
+                                                                time.sleep(1)
+                                                if money < 20:
+                                                        print("| You don't have enough money! you need to have 20$ to buy this")
                                         invsel=int(input("| Exit?\n> "))
                                         print(invsel)
                                         if invsel != 56443:
