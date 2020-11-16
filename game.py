@@ -4,9 +4,10 @@ from random import randint
 import colorama
 from colorama import Fore, Back, Style
 colorama.init()
+from inputimeout import inputimeout, TimeoutOccurred
 
 name = "ya-ilya game"
-ver = "pre-release 1.0"
+ver = "second pre-release 1.0"
 
 savefiler = open("save.txt",'r',encoding = 'utf-8')
 money = int(savefiler.readline())
@@ -31,7 +32,6 @@ selmain = int(input("> "))
 if selmain == 1:
         print("| [SOON] Choose the difficulty\n| 1 - Normal")
         print("------------------------------------------------------------------")
-        seldiff = 0
         seldiff = int(input("> "))
         if seldiff == 1:
                 while 1:
@@ -44,35 +44,67 @@ if selmain == 1:
                                 seldey = 0
                                 seldey = int(input("> "))
                                 if seldey == 1:
+                                        os.system('cls' if os.name == 'nt' else 'clear')
+                                        fishrandsn = randint(1, 3)
+                                        fishrandsntwo = randint(1, 3)
+                                        fishs = 0
                                         if energy > 6:
-                                                fishs = 0
-                                                os.system('cls' if os.name == 'nt' else 'clear')
                                                 print("| You started fishing")
                                                 time.sleep(randint(0, 9))
-                                                fishone = randint(0, 5)
-                                                energy = energy - 3
-                                                print("| You caught " + str(fishone) +" fish")
-                                                time.sleep(randint(0, 9))
-                                                fishtwo = randint(0, 4)
-                                                energy = energy - 3
-                                                print("| You caught " + str(fishtwo) + " more fish")
-                                                fishs = fishone + fishtwo
-                                                time.sleep(1.3)
-                                                if itemud == 0:
-                                                        fishmoney = fishs * randint(1, 3)
-                                                elif itemud == 1:
-                                                        fishmoney = fishs * randint(1, 6)
-                                                print("| You managed to catch " + str(fishs) + " fish. You sold them for $ " + str(fishmoney))
-                                                time.sleep(0.8)
-                                                print("| You also spent 6 energy!")
-                                                print("------------------------------------------------------------------")
-                                                money = money + fishmoney
+                                                try:
+                                                        something = inputimeout(prompt="| You will see that there are fish in the net!\n| 1 - Pull out the grid\n> ", timeout=3)
+                                                        if fishrandsn == 1:
+                                                                fishs = randint(0, 5)
+                                                                print("| You have successfully taken all the fish from the net")
+                                                                time.sleep(1)
+                                                        elif fishrandsn == 2:
+                                                                print("| You slipped and fell into the sea, and the fish were released from the net")
+                                                                health = health - 2
+                                                                time.sleep(1)
+                                                        elif fishrandsn == 3:
+                                                                print("| hmm.. You have come to the net and was there was nothing there! What's wrong with you")
+                                                                time.sleep(1)
+                                                        print("------------------------------------------------------------------")
+                                                        time.sleep(randint(2, 9))
+                                                except TimeoutOccurred:
+                                                        something = "| You didn't have time to pull the fish out! ("
+                                                        print(something)
+                                                try:
+                                                        something = inputimeout(prompt="| You will see that another fish is biting!\n| 1 - Try to catch\n> ", timeout=3)
+                                                        if fishrandsntwo == 1:
+                                                                fishs = fishs + randint(0, 4)
+                                                                print("| You have successfully taken all the fish from the net")
+                                                                time.sleep(1)
+                                                        elif fishrandsntwo == 2:
+                                                                print("| You slipped and fell into the sea, and the fish were released from the net")
+                                                                health = health - 2
+                                                                time.sleep(1)
+                                                        elif fishrandsntwo == 3:
+                                                                print("| hmm.. You have come to the net and was there was nothing there! What's wrong with you")
+                                                                time.sleep(1)
+                                                        energy = energy - 6
+                                                        time.sleep(1.3)
+                                                        if itemud == 0:
+                                                                fishmoney = fishs * randint(1, 3)
+                                                        elif itemud == 1:
+                                                                fishmoney = fishs * randint(1, 6)
+                                                        if fishs == 0:
+                                                                print("| Unfortunately, you didn't catch anything")
+                                                        else:
+                                                                print("| You managed to catch " + str(fishs) + " fish. You sold them for $ " + str(fishmoney))
+                                                        time.sleep(0.8)
+                                                        print("| You also spent 6 energy!")
+                                                        print("------------------------------------------------------------------")
+                                                        money = money + fishmoney
+                                                except TimeoutOccurred:
+                                                        something = "| You didn't have time to pull out the second fish! ("
+                                                        print(something)
                                         elif energy < 6:
                                                 print("| You have no energy! Sleep")
                                                 print("------------------------------------------------------------------")
                                         invsel=int(input("| Exit?\n> "))
                                         print(invsel)
-                                        if invsel != 56443:
+                                        if invsel != None:
                                                 os.system('cls' if os.name == 'nt' else 'clear')
                                 elif seldey == 2:
                                                 if energy > 8:
@@ -94,8 +126,6 @@ if selmain == 1:
                                                                 time.sleep(0.2)
                                                                 print("| Finishing the job..")
                                                                 time.sleep(1.0)
-                                                                energy = energy - 4
-                                                                facttwo = 0
                                                                 if level == 1:
                                                                         exp = exp + randint(1, 2)
                                                                         facttwo = randint(3, 7)
@@ -112,6 +142,7 @@ if selmain == 1:
                                                                         facttwo == randint(7, 13)
                                                                 print("| You have earned " + str(facttwo) + "$ so far")
                                                                 print("------------------------------------------------------------------")
+                                                                energy = energy - 4
                                                                 time.sleep(0.9)
                                                         b=int(input("| 1 - get started\n| Any number - cancel\n"))
                                                         if b != 1:
@@ -128,8 +159,6 @@ if selmain == 1:
                                                                 time.sleep(0.2)
                                                                 print("| Finishing the job..")
                                                                 time.sleep(1.0)
-                                                                energy = energy - 4
-                                                                fact = 0
                                                                 if level == 1:
                                                                         exp = exp + randint(1, 2)
                                                                         fact = randint(3, 7)
@@ -148,14 +177,15 @@ if selmain == 1:
                                                                         time.sleep(0.7)
                                                                 elif level == 3:
                                                                         fact == randint(7, 13)
+                                                                energy = energy - 4
                                                                 factmoneys = fact + facttwo
-                                                                money = factmoneys
+                                                                money = money + factmoneys
                                                                 print("| You got another " + str(factmoneys) + "$ working in the factory\n| You have " + str(level) + " level")
                                                                 print("| You also spent 8 energy!")
                                                                 print("------------------------------------------------------------------")
                                                                 invsel=int(input("| Exit?\n> "))
                                                                 print(invsel)
-                                                                if invsel != 56443:
+                                                                if invsel != None:
                                                                         os.system('cls' if os.name == 'nt' else 'clear')
                                                                 money = money + factmoneys
                                                                 time.sleep(0.9)
@@ -184,7 +214,7 @@ if selmain == 1:
                                                         time.sleep(2)
                                                         invsel=int(input("| Exit?\n> "))
                                                         print(invsel)
-                                                        if invsel != 56443:
+                                                        if invsel != None:
                                                                 os.system('cls' if os.name == 'nt' else 'clear')
                                                 else:
                                                         print("| You have enough energy - " + energy)
@@ -251,7 +281,7 @@ if selmain == 1:
                                                         print("| You don't have enough money! you need to have 20$ to buy this")
                                         invsel=int(input("| Exit?\n> "))
                                         print(invsel)
-                                        if invsel != 56443:
+                                        if invsel != None:
                                                 os.system('cls' if os.name == 'nt' else 'clear')
                                 elif seldey == 5:
                                         os.system('cls' if os.name == 'nt' else 'clear')
@@ -280,7 +310,7 @@ if selmain == 1:
                                                 print("| First aid kits: " + str(itemfirstaidkit))
                                         print("| You can buy items in the store")
                                         print("------------------------------------------------------------------")
-                                        invsel=int(input(str(faktext)))
+                                        invsel=int(input(faktext))
                                         print(invsel)
                                         if invsel == 1:
                                                 if itemfirstaidkit >= 1:
@@ -296,7 +326,7 @@ if selmain == 1:
                                                 elif itemfirstaidkit < 1:
                                                         print("| You don't have any first aid kits! You can buy them in the store")
                                                         time.sleep(1)
-                                        elif invsel != 56443:
+                                        elif invsel != None:
                                                 os.system('cls' if os.name == 'nt' else 'clear')
                                 elif seldey == 6:
                                         os.system('cls' if os.name == 'nt' else 'clear')
@@ -308,7 +338,7 @@ if selmain == 1:
                                         print("| The game has been saved!")
                                         invsel=int(input("| Exit?\n> "))
                                         print(invsel)
-                                        if invsel != 56443:
+                                        if invsel != None:
                                                 os.system('cls' if os.name == 'nt' else 'clear')
                                 elif seldey == 7:
                                         os.system('cls' if os.name == 'nt' else 'clear')
@@ -328,7 +358,6 @@ if selmain == 1:
                                                         elif huntrandentity == 3:
                                                                 hunttargeone = "bird"
                                                         try:
-                                                                from inputimeout import inputimeout, TimeoutOccurred
                                                                 something = inputimeout(prompt="| Have you seen " + str(hunttargeone) + "\n| Shoot him?\n| 1 - Yes\n> ", timeout=3)
                                                                 if huntrandsn == 1:
                                                                         if hunttargeone == "hare":
@@ -392,8 +421,6 @@ if selmain == 1:
                                         print(invsel)
                                 elif seldey == 8:
                                         print("| bb")
-                                        os.abort()
-
-                                                                
+                                        os.abort()                                           
                         except ValueError:
                                 print("")
