@@ -130,13 +130,13 @@ if selmain == 1:
                                                                         exp += randint(1, 2)
                                                                         facttwo = randint(3, 7)
                                                                         if exp > 30:
-                                                                                level = level + 1
+                                                                                level += 1
                                                                                 print("| You got level 2 in the factory!")
                                                                 elif level == 2:
                                                                         exp += randint(2, 3)
                                                                         facttwo = randint(5, 10)
                                                                         if exp > 30:
-                                                                                level = level + 1
+                                                                                level += 1
                                                                                 print("| You got level 3 in the factory!")
                                                                 elif level == 3:
                                                                         facttwo == randint(7, 13)
@@ -163,7 +163,7 @@ if selmain == 1:
                                                                         exp += randint(1, 2)
                                                                         fact = randint(3, 7)
                                                                         if exp > 15:
-                                                                                level = level + 1
+                                                                                level += 1
                                                                                 print("| You got level 2 in the factory!")
                                                                                 exp = 0
                                                                         time.sleep(0.7)
@@ -171,7 +171,7 @@ if selmain == 1:
                                                                         exp += randint(2, 3)
                                                                         fact = randint(5, 10)
                                                                         if exp > 30:
-                                                                                level = level + 1
+                                                                                level += 1
                                                                                 print("| You got level 3 in the factory!")
                                                                                 exp = 0
                                                                         time.sleep(0.7)
