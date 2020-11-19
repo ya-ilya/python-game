@@ -59,7 +59,7 @@ if selmain == 1:
                                                                 time.sleep(1)
                                                         elif fishrandsn == 2:
                                                                 print("| You slipped and fell into the sea, and the fish were released from the net")
-                                                                health = health - 2
+                                                                health -= 2
                                                                 time.sleep(1)
                                                         elif fishrandsn == 3:
                                                                 print("| hmm.. You have come to the net and was there was nothing there! What's wrong with you")
@@ -95,7 +95,7 @@ if selmain == 1:
                                                         time.sleep(0.8)
                                                         print("| You also spent 6 energy!")
                                                         print("------------------------------------------------------------------")
-                                                        money = money + fishmoney
+                                                        money += fishmoney
                                                 except TimeoutOccurred:
                                                         something = "| You didn't have time to pull out the second fish! ("
                                                         print(something)
@@ -127,13 +127,13 @@ if selmain == 1:
                                                                 print("| Finishing the job..")
                                                                 time.sleep(1.0)
                                                                 if level == 1:
-                                                                        exp = exp + randint(1, 2)
+                                                                        exp += randint(1, 2)
                                                                         facttwo = randint(3, 7)
                                                                         if exp > 30:
                                                                                 level = level + 1
                                                                                 print("| You got level 2 in the factory!")
                                                                 elif level == 2:
-                                                                        exp = exp + randint(2, 3)
+                                                                        exp += randint(2, 3)
                                                                         facttwo = randint(5, 10)
                                                                         if exp > 30:
                                                                                 level = level + 1
@@ -142,7 +142,7 @@ if selmain == 1:
                                                                         facttwo == randint(7, 13)
                                                                 print("| You have earned " + str(facttwo) + "$ so far")
                                                                 print("------------------------------------------------------------------")
-                                                                energy = energy - 4
+                                                                energy -= 4
                                                                 time.sleep(0.9)
                                                         b=int(input("| 1 - get started\n| Any number - cancel\n"))
                                                         if b != 1:
@@ -160,7 +160,7 @@ if selmain == 1:
                                                                 print("| Finishing the job..")
                                                                 time.sleep(1.0)
                                                                 if level == 1:
-                                                                        exp = exp + randint(1, 2)
+                                                                        exp += randint(1, 2)
                                                                         fact = randint(3, 7)
                                                                         if exp > 15:
                                                                                 level = level + 1
@@ -168,7 +168,7 @@ if selmain == 1:
                                                                                 exp = 0
                                                                         time.sleep(0.7)
                                                                 elif level == 2:
-                                                                        exp = exp + randint(2, 3)
+                                                                        exp += randint(2, 3)
                                                                         fact = randint(5, 10)
                                                                         if exp > 30:
                                                                                 level = level + 1
@@ -177,9 +177,9 @@ if selmain == 1:
                                                                         time.sleep(0.7)
                                                                 elif level == 3:
                                                                         fact == randint(7, 13)
-                                                                energy = energy - 4
+                                                                energy -= 4
                                                                 factmoneys = fact + facttwo
-                                                                money = money + factmoneys
+                                                                money += factmoneys
                                                                 print("| You got another " + str(factmoneys) + "$ working in the factory\n| You have " + str(level) + " level")
                                                                 print("| You also spent 8 energy!")
                                                                 print("------------------------------------------------------------------")
@@ -187,7 +187,7 @@ if selmain == 1:
                                                                 print(invsel)
                                                                 if invsel != None:
                                                                         os.system('cls' if os.name == 'nt' else 'clear')
-                                                                money = money + factmoneys
+                                                                money += factmoneys
                                                                 time.sleep(0.9)
                                                 elif energy < 8:
                                                         print("| You have no energy! Sleep")
@@ -202,7 +202,7 @@ if selmain == 1:
                                                 tempenergy = energy
                                                 if tempenergy < 36:
                                                         energyint = randint(6, 17)
-                                                        energy = energy + energyint
+                                                        energy += energyint
                                                         print("| You went to bed and started sleeping")
                                                         time.sleep(1)
                                                         print("------------------------------------------------------------------")
@@ -232,7 +232,7 @@ if selmain == 1:
                                                                 print("| Fool! You don't have enough money to buy this")
                                                                 print("------------------------------------------------------------------")
                                                         elif money > 80:
-                                                                money = money - 80
+                                                                money -= 80
                                                                 itemud = 1
                                                                 print("| You have successfully purchased a fishing rod for $80! Now your balance - " + str(money))
                                                                 print("------------------------------------------------------------------")
@@ -242,7 +242,7 @@ if selmain == 1:
                                                         haremoney = itemhare * 7
                                                         itemhare = 0
                                                         print("| You have successfully sold all the hares and received " + str(haremoney))
-                                                        money = money + haremoney
+                                                        money += haremoney
                                                         time.sleep(1)
                                                 elif itemhare == 0:
                                                         print("| You don't have any hares in your inventory")
@@ -252,7 +252,7 @@ if selmain == 1:
                                                         deermoney = itemdeer * 12
                                                         itemdeer = 0
                                                         print("| You sold all the deer and got " + str(deermoney))
-                                                        money = money + deermoney
+                                                        money += deermoney
                                                         time.sleep(1)
                                                 elif itemhare == 0:
                                                         print("| You don't have any deer in your inventory")
@@ -262,7 +262,7 @@ if selmain == 1:
                                                         birdmoney = itemdeer * 4
                                                         itembird = 0
                                                         print("| You sold all the birds for " + str(birdmoney))
-                                                        money = money + birdmoney
+                                                        money += birdmoney
                                                         time.sleep(1)
                                                 elif itembird == 0:
                                                         print("| You don't have any birds in your inventory")
@@ -271,7 +271,7 @@ if selmain == 1:
                                                 if money >= 20:
                                                         if itemfirstaidkit < 5:
                                                                 print("| you have successfully purchased a first aid kit")
-                                                                money = money - 20
+                                                                money -= 20
                                                                 itemfirstaidkit = itemfirstaidkit + 1
                                                                 time.sleep(1)
                                                         elif itemfirstaidkit >= 5:
@@ -320,8 +320,8 @@ if selmain == 1:
                                                         elif health < 20:
                                                                 fakrand = randint(5, 20)
                                                                 print("| First aid kit successfully applied! You added " + str(fakrand))
-                                                                health = health + fakrand
-                                                                itemfirstaidkit = itemfirstaidkit - 1
+                                                                health += fakrand
+                                                                itemfirstaidkit -= 1
                                                                 time.sleep(1)
                                                 elif itemfirstaidkit < 1:
                                                         print("| You don't have any first aid kits! You can buy them in the store")
@@ -366,8 +366,8 @@ if selmain == 1:
                                                                                         print("| You don't have room for this hare! Sell the rest in the store!")
                                                                                         time.sleep(2)
                                                                                 else:
-                                                                                        energy = energy - 3
-                                                                                        itemhare = itemhare + 1
+                                                                                        energy -= 3
+                                                                                        itemhare += 1
                                                                                         time.sleep(2)
                                                                         elif hunttargeone == "deer":
                                                                                 print("| Wow! You shot a deer! Good loot")
@@ -375,13 +375,13 @@ if selmain == 1:
                                                                                         print("| Unfortunately, you can not carry this deer, you have no free space! You can free up space by selling items in the store!")
                                                                                         time.sleep(2)
                                                                                 else:
-                                                                                        itemdeer = itemdeer + 1
-                                                                                        energy = energy - 5
+                                                                                        itemdeer += 1
+                                                                                        energy -= 5
                                                                                         time.sleep(2)
                                                                         elif hunttargeone == "bird":
                                                                                 print("| You shot a little bird! So-so production")   
-                                                                                itembird = itembird + 1
-                                                                                energy = energy - 2
+                                                                                itembird += 1
+                                                                                energy -= 2
                                                                                 time.sleep(2)            
                                                                 elif huntrandsn == 2:
                                                                         if hunttargeone == "hare":
@@ -403,12 +403,12 @@ if selmain == 1:
                                                                         elif huntrandsn == "deer":
                                                                                 if health < 10:
                                                                                         print("You hit a deer in the leg and it ran at you! You're dead...")
-                                                                                        money = money - money / 2
-                                                                                        energy = energy - energy / 2
+                                                                                        money -= money / 2
+                                                                                        energy -= energy / 2
                                                                                         health = 15
                                                                                         time.sleep(2)
                                                                                 else:
-                                                                                        health = health - 10
+                                                                                        health -= 10
                                                                                         print("| you hit a deer in the leg and it ran at you! Your HP has dropped to " + str(health))
                                                                                         time.sleep(2)
                                                         except TimeoutOccurred:
