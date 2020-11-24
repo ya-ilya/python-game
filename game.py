@@ -77,7 +77,7 @@ if selmain == 1:
                                                                 time.sleep(1)
                                                         elif fishrandsntwo == 2:
                                                                 print("| You slipped and fell into the sea, and the fish were released from the net")
-                                                                health = health - 2
+                                                                health -= 2
                                                                 time.sleep(1)
                                                         elif fishrandsntwo == 3:
                                                                 print("| hmm.. You have come to the net and was there was nothing there! What's wrong with you")
