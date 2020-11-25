@@ -20,6 +20,7 @@ itemdeer = int(savefiler.readline())
 itembird = int(savefiler.readline())
 level = int(savefiler.readline())
 savefiler.close()
+exp = 0
 
 print("██╗░░░██╗░█████╗░░░░░░░██╗██╗░░░░░██╗░░░██╗░█████╗░\n╚██╗░██╔╝██╔══██╗░░░░░░██║██║░░░░░╚██╗░██╔╝██╔══██╗\n░╚████╔╝░███████║█████╗██║██║░░░░░░╚████╔╝░███████║\n░░╚██╔╝░░██╔══██║╚════╝██║██║░░░░░░░╚██╔╝░░██╔══██║\n░░░██║░░░██║░░██║░░░░░░██║███████╗░░░██║░░░██║░░██║\n░░░╚═╝░░░╚═╝░░╚═╝░░░░░░╚═╝╚══════╝░░░╚═╝░░░╚═╝░░╚═╝")
 print("Welcome to " + name + " [" + ver + "]")
@@ -103,12 +104,10 @@ if selmain == 1:
                                                 print("| You have no energy! Sleep")
                                                 print("------------------------------------------------------------------")
                                         invsel=int(input("| Exit?\n> "))
-                                        print(invsel)
                                         if invsel != None:
                                                 os.system('cls' if os.name == 'nt' else 'clear')
                                 elif seldey == 2:
                                                 if energy > 8:
-                                                        exp = 0
                                                         os.system('cls' if os.name == 'nt' else 'clear')
                                                         print("| You came to work at the factory. There is a system of levels. The more levels the more you pay")
                                                         time.sleep(0.7)
@@ -197,7 +196,6 @@ if selmain == 1:
                                 elif seldey == 3:
                                         os.system('cls' if os.name == 'nt' else 'clear')
                                         vop=int(input("| Are you sure this is what you want? This will take time\n| 1 - get started\n| Any number - cancel\n------------------------------------------------------------------\n> "))
-                                        print(vop)
                                         if vop == 1:
                                                 tempenergy = energy
                                                 if tempenergy < 36:
@@ -221,7 +219,6 @@ if selmain == 1:
                                 elif seldey == 4:
                                         os.system('cls' if os.name == 'nt' else 'clear')
                                         magsel=int(input("| You came to the store and were shown a list of products\n| 1 - fishing rod (gives you 2 times more money from fishin - 80$\n| 2 - to sell rabbits\n| 3 - sell deer\n| 4 - to sell birds\n| 5 - buy first aid kit - 20$\n Enter the number of the product you want to sell or buy: "))
-                                        print(magsel)
                                         if magsel == 1:
                                                 if itemud != 0:
                                                         print("| You already have a fishing rod!")
@@ -280,7 +277,6 @@ if selmain == 1:
                                                 if money < 20:
                                                         print("| You don't have enough money! you need to have 20$ to buy this")
                                         invsel=int(input("| Exit?\n> "))
-                                        print(invsel)
                                         if invsel != None:
                                                 os.system('cls' if os.name == 'nt' else 'clear')
                                 elif seldey == 5:
@@ -311,7 +307,6 @@ if selmain == 1:
                                         print("| You can buy items in the store")
                                         print("------------------------------------------------------------------")
                                         invsel=int(input(faktext))
-                                        print(invsel)
                                         if invsel == 1:
                                                 if itemfirstaidkit >= 1:
                                                         if health >= 20:
@@ -337,14 +332,12 @@ if selmain == 1:
                                         time.sleep(2)
                                         print("| The game has been saved!")
                                         invsel=int(input("| Exit?\n> "))
-                                        print(invsel)
                                         if invsel != None:
                                                 os.system('cls' if os.name == 'nt' else 'clear')
                                 elif seldey == 7:
                                         os.system('cls' if os.name == 'nt' else 'clear')
                                         if energy > 6:
                                                 huntsel=int(input("| Are you sure you want to go hunting? You might get killed\n| 1 - Yes\n| ENTER - No\n> "))
-                                                print(huntsel)
                                                 if huntsel == 1:
                                                         print("| You went hunting")
                                                         huntrand = randint(3, 8)
