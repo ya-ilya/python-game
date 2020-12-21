@@ -3,8 +3,8 @@ import os
 from random import randint
 import colorama
 from colorama import Fore, Back, Style
-colorama.init()
 from inputimeout import inputimeout, TimeoutOccurred
+colorama.init()
 
 name = "ya-ilya game"
 ver = "second pre-release 1.0"
@@ -73,7 +73,7 @@ if selmain == 1:
                                                 try:
                                                         something = inputimeout(prompt="| You will see that another fish is biting!\n| 1 - Try to catch\n> ", timeout=3)
                                                         if fishrandsntwo == 1:
-                                                                fishs = fishs + randint(0, 4)
+                                                                fishs += randint(0, 4)
                                                                 print("| You have successfully taken all the fish from the net")
                                                                 time.sleep(1)
                                                         elif fishrandsntwo == 2:
@@ -269,7 +269,7 @@ if selmain == 1:
                                                         if itemfirstaidkit < 5:
                                                                 print("| you have successfully purchased a first aid kit")
                                                                 money -= 20
-                                                                itemfirstaidkit = itemfirstaidkit + 1
+                                                                itemfirstaidkit += 1
                                                                 time.sleep(1)
                                                         elif itemfirstaidkit >= 5:
                                                                 print("you have more than 5 first aid kits! where do you want so much?")
